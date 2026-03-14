@@ -57,6 +57,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'project.wsgi.application'
+UTH_USER_MODEL = "user.CustomUser"
 
 
 # Database
