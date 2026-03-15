@@ -1,8 +1,10 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
+
 
 class Quiz(models.Model):
     title = models.CharField(max_length=200)
+
 
 class Question(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name="questions")
@@ -13,7 +15,8 @@ class Question(models.Model):
     option_d = models.CharField(max_length=100)
     correct_option = models.CharField(max_length=1)
 
+
 class Result(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     score = models.IntegerField()
