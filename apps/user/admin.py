@@ -6,10 +6,10 @@ from .models import CustomUser
 
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    list_display = ("name","email", "is_staff", "is_active",)
-    list_filter = ("name","email", "is_staff", "is_active",)
+    list_display = ("email", "is_staff", "is_active")
+    list_filter = ("is_staff", "is_active")
+    ordering = ("email",)
     fieldsets = (
-        (None, {"fields": ("name")}),
         (None, {"fields": ("email", "password")}),
         ("Permissions", {"fields": ("is_staff", "is_active", "groups", "user_permissions")}),
     )
